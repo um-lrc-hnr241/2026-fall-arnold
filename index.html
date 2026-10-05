@@ -3,30 +3,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Our Portfolio Site</title>
+  <title>Portfolio Lab — Student Work in Motion</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header">
-    <p class="site-title"><a href="index.html">Our Portfolio Site</a></p>
-    <nav aria-label="Main">
+    <p class="site-title"><a href="#top">Portfolio<span aria-hidden="true">/</span>Lab</a></p>
+    <nav aria-label="Main navigation">
       <ul>
-        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="#work">Selected work</a></li>
+        <li><a href="#approach">Our approach</a></li>
+        <li><a href="#contact">Get in touch</a></li>
       </ul>
     </nav>
   </header>
 
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <main id="main">
-    <h1>Welcome</h1>
-    <p>This is your group's starter site. Nothing here is final.</p>
-    <p>Fill in your planning Doc, then leave a comment that starts with
-      <code>@agent build</code> to have the agent replace this page with your own.</p>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Student collective · Portfolio 2025</p>
+        <h1 id="hero-title">Ideas in motion.<br><span>Made together.</span></h1>
+        <p class="hero-intro">A living collection of experiments, projects, and perspectives from our group. Scroll to explore what happens when curiosity meets collaboration.</p>
+        <a class="button-link" href="#work">Explore the work <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="orbital-art" aria-hidden="true">
+        <span class="orbit orbit-one"></span>
+        <span class="orbit orbit-two"></span>
+        <span class="orbit orbit-three"></span>
+        <span class="orb-core"></span>
+        <span class="orb-label">CREATE<br>TOGETHER</span>
+      </div>
+      <p class="scroll-cue" aria-hidden="true">Scroll to discover <span>↓</span></p>
+    </section>
+
+    <section class="content-section work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <p class="eyebrow">01 / The collection</p>
+        <h2 id="work-title">Selected work<span class="heading-mark" aria-hidden="true">✳</span></h2>
+        <p>A snapshot of the questions we're asking and the things we're making.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card card-cyan">
+          <span class="card-index">PROJECT / 01</span>
+          <div class="card-shape shape-rings" aria-hidden="true"><span></span></div>
+          <h3>Signals &amp; systems</h3>
+          <p>Exploring the patterns and connections that shape the world around us.</p>
+          <span class="card-tag">RESEARCH · PROCESS</span>
+        </article>
+        <article class="project-card card-violet">
+          <span class="card-index">PROJECT / 02</span>
+          <div class="card-shape shape-grid" aria-hidden="true"><span></span></div>
+          <h3>Future fragments</h3>
+          <p>Small experiments that turn big, speculative ideas into something tangible.</p>
+          <span class="card-tag">EXPERIMENT · DESIGN</span>
+        </article>
+        <article class="project-card card-lime">
+          <span class="card-index">PROJECT / 03</span>
+          <div class="card-shape shape-sun" aria-hidden="true"><span></span></div>
+          <h3>Common ground</h3>
+          <p>A collaborative look at how shared perspectives can create new possibilities.</p>
+          <span class="card-tag">COLLABORATION · IDEAS</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="approach-section" id="approach" aria-labelledby="approach-title">
+      <div class="approach-copy">
+        <p class="eyebrow">02 / How we work</p>
+        <h2 id="approach-title">Stay curious.<br><span>Build boldly.</span></h2>
+        <p>We bring different perspectives to the same table, make room for happy accidents, and learn by making. This portfolio is a work in progress—just like the ideas inside it.</p>
+      </div>
+      <ol class="steps-list">
+        <li><span>01</span><div><h3>Ask better questions</h3><p>Start with curiosity, not assumptions.</p></div></li>
+        <li><span>02</span><div><h3>Make a first move</h3><p>Try it, test it, and see what changes.</p></div></li>
+        <li><span>03</span><div><h3>Make it together</h3><p>Share what we learn and build on it.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <p class="eyebrow">03 / Keep the conversation going</p>
+      <h2 id="contact-title">Good ideas travel.<br><span>Pass one along.</span></h2>
+      <p>Have a question or an idea to share? Find our group and say hello.</p>
+      <a class="button-link button-light" href="mailto:hello@example.com">Start a conversation <span aria-hidden="true">↗</span></a>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <p>Built by our group with help from an AI agent.</p>
+    <p>Made with curiosity by our group. <a href="#top">Back to top ↑</a></p>
   </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
