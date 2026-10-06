@@ -525,6 +525,14 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transform: translate3d(var(--pointer-x, 0px), var(--pointer-y, 0px), 0) scale(1.04);
+  transition: transform 250ms ease-out;
+  animation: consciousness-drift 24s ease-in-out infinite alternate;
+}
+
+@keyframes consciousness-drift {
+  from { object-position: 46% 48%; }
+  to { object-position: 54% 52%; }
 }
 
 .site-header,
@@ -674,11 +682,13 @@ h3 {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-portrait .portrait-image,
-  .consciousness-backdrop {
+  .consciousness-backdrop,
+  .consciousness-backdrop img {
     transition: none;
   }
 
-  .hero-portrait .portrait-image {
+  .hero-portrait .portrait-image,
+  .consciousness-backdrop img {
     transform: none;
   }
 }
