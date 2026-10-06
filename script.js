@@ -3,7 +3,23 @@ document.documentElement.classList.add("js");
 const progress = document.querySelector(".scroll-progress");
 const hero = document.querySelector(".hero");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const consciousnessImage = document.querySelector(".consciousness-backdrop img");
 let ticking = false;
+
+if (consciousnessImage) {
+  window.addEventListener("pointermove", (event) => {
+    if (reducedMotion.matches) return;
+    const x = (event.clientX / window.innerWidth - 0.5) * -18;
+    const y = (event.clientY / window.innerHeight - 0.5) * -18;
+    consciousnessImage.style.setProperty("--pointer-x", `${x}px`);
+    consciousnessImage.style.setProperty("--pointer-y", `${y}px`);
+  }, { passive: true });
+
+  window.addEventListener("pointerleave", () => {
+    consciousnessImage.style.setProperty("--pointer-x", "0px");
+    consciousnessImage.style.setProperty("--pointer-y", "0px");
+  });
+}
 
 function updateProgress() {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
