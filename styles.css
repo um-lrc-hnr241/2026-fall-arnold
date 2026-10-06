@@ -308,6 +308,20 @@ video {
 }
 
 .section-heading { max-width: 42rem; margin-bottom: 2.5rem; }
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.quote-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+.quote-card h3 { margin: 0 0 1rem; color: var(--accent); font-size: 1rem; }
+.quote-card blockquote { margin: 0; }
+.quote-card blockquote p { color: var(--text); }
+.quote-card cite { color: var(--muted); font-size: 0.9rem; }
 .section-heading h2,
 .approach-copy h2,
 .contact-section h2 {
@@ -464,6 +478,7 @@ video {
   .project-card p { min-height: 0; }
   .approach-section { grid-template-columns: 1fr; gap: 2rem; }
   .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quote-grid { grid-template-columns: 1fr; }
   .team-photo-section { grid-template-columns: 1fr; }
 }
 
