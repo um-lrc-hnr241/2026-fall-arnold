@@ -569,7 +569,7 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  opacity: var(--brain-opacity, 0.06);
+  opacity: var(--brain-opacity, 0.1);
   pointer-events: none;
   transition: opacity 180ms linear;
 }
@@ -577,7 +577,7 @@ body {
 .consciousness-backdrop::after {
   position: absolute;
   inset: 0;
-  background: rgb(243 239 228 / 62%);
+  background: rgb(243 239 228 / 48%);
   content: "";
 }
 
