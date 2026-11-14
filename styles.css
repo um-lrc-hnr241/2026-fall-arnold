@@ -343,13 +343,36 @@ video {
 }
 
 .build-list {
+  position: relative;
   display: grid;
-  gap: 0.75rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 0.75rem;
+}
+
+.build-list::before {
+  position: absolute;
+  inset: 1.25rem 2.5rem;
+  border: 1px dashed var(--accent);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
 }
 
 .build-accordion {
+  position: relative;
+  z-index: 1;
   border: 1px solid var(--border);
+  border-radius: 2rem;
   background: var(--panel);
+}
+
+.build-accordion:nth-child(5) { grid-column: 4; }
+.build-accordion:nth-child(6) { grid-column: 3; }
+.build-accordion:nth-child(7) { grid-column: 2; }
+.build-accordion:nth-child(8) { grid-column: 1; }
+
+.build-accordion[open] {
+  border-radius: 1rem;
 }
 
 .build-accordion summary {
@@ -530,6 +553,11 @@ video {
 @media (max-width: 760px) {
   .site-header { gap: 0.5rem; }
   nav ul { gap: 0.75rem; font-size: 0.9rem; }
+  .build-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .build-list::before { inset: 1rem; }
+  .build-accordion:nth-child(3), .build-accordion:nth-child(7) { grid-column: 2; }
+  .build-accordion:nth-child(4), .build-accordion:nth-child(8) { grid-column: 1; }
+  .build-accordion:nth-child(5), .build-accordion:nth-child(6) { grid-column: auto; }
   .hero { min-height: auto; grid-template-columns: 1fr; padding: 5rem 0 6rem; }
   .orbital-art { position: absolute; top: 4rem; right: -4rem; width: min(54vw, 20rem); opacity: 0.48; }
   .hero-copy { max-width: 42rem; }
