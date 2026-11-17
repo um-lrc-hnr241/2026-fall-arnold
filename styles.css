@@ -679,6 +679,21 @@ h3 {
   object-position: center 35%;
 }
 
+.hero-portrait .portrait-toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hero-portrait .portrait-toggle:focus-visible {
+  outline: 4px solid var(--accent);
+  outline-offset: -4px;
+}
+
 .hero-portrait .portrait-image {
   z-index: 2;
   transform: translateY(var(--portrait-lift, 0%));
