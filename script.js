@@ -4,7 +4,22 @@ const progress = document.querySelector(".scroll-progress");
 const hero = document.querySelector(".hero");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const consciousnessImage = document.querySelector(".consciousness-backdrop img");
+const portraitToggle = document.querySelector(".portrait-toggle");
 let ticking = false;
+
+if (portraitToggle) {
+  const portrait = portraitToggle.querySelector(".portrait-image");
+  const originalAlt = portrait.alt;
+  const editedAlt = "Edited AI-generated portrait of Arnold from Westworld";
+
+  portraitToggle.addEventListener("click", () => {
+    const showingEdited = portraitToggle.getAttribute("aria-pressed") !== "true";
+    portrait.src = showingEdited ? portraitToggle.dataset.editedSrc : portraitToggle.dataset.originalSrc;
+    portrait.alt = showingEdited ? editedAlt : originalAlt;
+    portraitToggle.setAttribute("aria-pressed", String(showingEdited));
+    portraitToggle.setAttribute("aria-label", showingEdited ? "Show the original Arnold portrait" : "Show the edited Arnold portrait");
+  });
+}
 
 if (consciousnessImage) {
   window.addEventListener("pointermove", (event) => {
