@@ -55,7 +55,7 @@ window.addEventListener("resize", updateProgress, { passive: true });
 function updateConsciousness() {
   if (!hero) return;
   if (reducedMotion.matches) {
-    document.documentElement.style.setProperty("--brain-opacity", "0.12");
+    document.documentElement.style.setProperty("--brain-opacity", "0.2");
     document.documentElement.style.setProperty("--brain-reveal", "0.12");
     return;
   }
@@ -63,7 +63,7 @@ function updateConsciousness() {
   const reveal = Math.min(Math.max(window.scrollY / distance, 0), 1);
   document.documentElement.style.setProperty("--portrait-lift", `${-reveal * 100}%`);
   document.documentElement.style.setProperty("--brain-reveal", `${reveal}`);
-  document.documentElement.style.setProperty("--brain-opacity", `${0.06 + reveal * 0.22}`);
+  document.documentElement.style.setProperty("--brain-opacity", `${0.14 + reveal * 0.28}`);
 }
 
 reducedMotion.addEventListener?.("change", updateConsciousness);
