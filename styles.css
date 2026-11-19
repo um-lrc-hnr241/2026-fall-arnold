@@ -836,3 +836,86 @@ body {
     radial-gradient(ellipse at 12% 48%, rgb(57 89 76 / 10%), transparent 36rem),
     linear-gradient(145deg, #f7f3e9, var(--background) 58%, #e9e4d8);
 }
+
+/* Keep the reflection immediately after the introduction; later sections follow it. */
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main > .hero { order: 1; }
+main > .quotes-section { order: 2; }
+main > section:not(.hero):not(.quotes-section) { order: 3; }
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(48rem, calc(100svh - 5rem));
+  padding-bottom: 3rem;
+  color: #f7f3e9;
+  background: #29291f;
+}
+
+.hero::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  background:
+    radial-gradient(ellipse at 18% 25%, rgb(0 0 0 / 82%), transparent 54%),
+    radial-gradient(ellipse at 78% 68%, rgb(7 14 12 / 88%), transparent 57%),
+    linear-gradient(135deg, #151914, #35362d 52%, #1c211d);
+  opacity: var(--shadow-opacity, 1);
+  content: "";
+  animation: shadow-drift 16s ease-in-out infinite alternate;
+}
+
+@keyframes shadow-drift {
+  from { background-position: 0 0, 100% 100%, 0 0; }
+  to { background-position: 12% 8%, 88% 92%, 0 0; }
+}
+
+.hero-copy,
+.hero-portrait,
+.scroll-cue {
+  position: relative;
+  z-index: 1;
+}
+
+.hero .eyebrow,
+.hero .hero-intro,
+.hero .scroll-cue { color: #f1ecdf; }
+.hero h1 span { color: #c9d9c8; }
+.hero .button-link { border-color: #c9d9c8; color: #29291f; background: #e8e4d8; }
+
+.hero-portrait::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    radial-gradient(ellipse at 18% 25%, rgb(0 0 0 / 68%), transparent 54%),
+    radial-gradient(ellipse at 78% 68%, rgb(7 14 12 / 75%), transparent 57%);
+  opacity: var(--shadow-opacity, 1);
+  content: "";
+  pointer-events: none;
+  animation: shadow-drift 16s ease-in-out infinite alternate;
+}
+
+.hero-portrait .portrait-toggle { z-index: 2; }
+.hero-portrait .arnold-portrait { z-index: 1; }
+.hero-portrait .brain-reveal { z-index: 1; }
+
+.quotes-section {
+  padding-top: 3rem;
+  background: var(--background);
+}
+
+@media (max-width: 760px) {
+  .hero { min-height: auto; }
+  .hero-portrait { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero-portrait::after { animation: none; }
+}
