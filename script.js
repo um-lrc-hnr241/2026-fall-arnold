@@ -4,16 +4,17 @@ const progress = document.querySelector(".scroll-progress");
 const hero = document.querySelector(".hero");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const consciousnessImage = document.querySelector(".consciousness-backdrop img");
+const quoteSection = document.querySelector(".quotes-section");
 const portraitToggle = document.querySelector(".portrait-toggle");
 let ticking = false;
 
 if (portraitToggle) {
-  const placeholder = portraitToggle.querySelector(".portrait-placeholder");
+  const portraitImage = portraitToggle.querySelector(".arnold-portrait");
   const consciousness = portraitToggle.querySelector(".brain-reveal");
 
   portraitToggle.addEventListener("click", () => {
     const showingImage = portraitToggle.getAttribute("aria-pressed") !== "true";
-    placeholder.hidden = showingImage;
+    portraitImage.hidden = showingImage;
     consciousness.hidden = !showingImage;
     portraitToggle.setAttribute("aria-pressed", String(showingImage));
     portraitToggle.setAttribute("aria-label", showingImage ? "Show the portrait placeholder" : "Reveal the image representing consciousness");
@@ -39,6 +40,12 @@ function updateProgress() {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
   progress.style.setProperty("--scroll-progress", `${percent}%`);
+  if (quoteSection) {
+    const quoteBottom = quoteSection.getBoundingClientRect().bottom + window.scrollY;
+    const fadeDistance = Math.max(1, quoteBottom - window.innerHeight);
+    const fadeProgress = Math.min(1, Math.max(0, window.scrollY / fadeDistance));
+    document.documentElement.style.setProperty("--shadow-opacity", String(1 - fadeProgress));
+  }
   ticking = false;
 }
 
