@@ -8,16 +8,15 @@ const portraitToggle = document.querySelector(".portrait-toggle");
 let ticking = false;
 
 if (portraitToggle) {
-  const portrait = portraitToggle.querySelector(".portrait-image");
-  const originalAlt = portrait.alt;
-  const editedAlt = "Edited AI-generated portrait of Arnold from Westworld";
+  const placeholder = portraitToggle.querySelector(".portrait-placeholder");
+  const consciousness = portraitToggle.querySelector(".brain-reveal");
 
   portraitToggle.addEventListener("click", () => {
-    const showingEdited = portraitToggle.getAttribute("aria-pressed") !== "true";
-    portrait.src = showingEdited ? portraitToggle.dataset.editedSrc : portraitToggle.dataset.originalSrc;
-    portrait.alt = showingEdited ? editedAlt : originalAlt;
-    portraitToggle.setAttribute("aria-pressed", String(showingEdited));
-    portraitToggle.setAttribute("aria-label", showingEdited ? "Show the original Arnold portrait" : "Show the edited Arnold portrait");
+    const showingImage = portraitToggle.getAttribute("aria-pressed") !== "true";
+    placeholder.hidden = showingImage;
+    consciousness.hidden = !showingImage;
+    portraitToggle.setAttribute("aria-pressed", String(showingImage));
+    portraitToggle.setAttribute("aria-label", showingImage ? "Show the portrait placeholder" : "Reveal the image representing consciousness");
   });
 }
 
@@ -40,7 +39,6 @@ function updateProgress() {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
   progress.style.setProperty("--scroll-progress", `${percent}%`);
-  updateConsciousness();
   ticking = false;
 }
 
@@ -52,21 +50,6 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 window.addEventListener("resize", updateProgress, { passive: true });
 
-function updateConsciousness() {
-  if (!hero) return;
-  if (reducedMotion.matches) {
-    document.documentElement.style.setProperty("--brain-opacity", "0.2");
-    document.documentElement.style.setProperty("--brain-reveal", "0.12");
-    return;
-  }
-  const distance = Math.max(hero.offsetHeight * 0.72, 1);
-  const reveal = Math.min(Math.max(window.scrollY / distance, 0), 1);
-  document.documentElement.style.setProperty("--portrait-lift", `${-reveal * 100}%`);
-  document.documentElement.style.setProperty("--brain-reveal", `${reveal}`);
-  document.documentElement.style.setProperty("--brain-opacity", `${0.14 + reveal * 0.28}`);
-}
-
-reducedMotion.addEventListener?.("change", updateConsciousness);
 updateProgress();
 
 const revealTargets = document.querySelectorAll(
