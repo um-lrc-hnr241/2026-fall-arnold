@@ -719,15 +719,21 @@ h3 {
   outline-offset: -4px;
 }
 
-.hero-portrait .portrait-image {
+.hero-portrait .portrait-placeholder {
+  position: absolute;
+  inset: 0;
   z-index: 2;
-  transform: translateY(var(--portrait-lift, 0%));
-  will-change: transform;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  border: 1px dashed #777264;
+  color: var(--text);
+  background: linear-gradient(135deg, #e5dfd2, #f3efe4);
+  font-size: 1.1rem;
 }
 
 .hero-portrait .brain-reveal {
   z-index: 1;
-  opacity: var(--brain-reveal, 0);
   object-fit: contain;
 }
 
@@ -812,13 +818,11 @@ h3 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-portrait .portrait-image,
   .consciousness-backdrop,
   .consciousness-backdrop img {
     transition: none;
   }
 
-  .hero-portrait .portrait-image,
   .consciousness-backdrop img {
     transform: none;
   }
